@@ -10342,9 +10342,9 @@
         contactStatus.classList.add('show');
 
         try {
-          const apiBase = window.location.origin.startsWith('http')
-            ? window.location.origin
-            : 'http://localhost:5000';
+          const apiBase = window.location.origin.includes('vercel.app')
+            ? 'https://srinath-potharaju.onrender.com'
+            : (window.location.origin.startsWith('http') ? window.location.origin : 'http://localhost:5000');
           const response = await fetch(`${apiBase}/api/contact`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
