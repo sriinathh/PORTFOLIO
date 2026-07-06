@@ -1178,18 +1178,37 @@
       }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       .viz-skill-item {
-        grid-template-columns: 1fr;
-        gap: 6px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 4px 12px;
+        align-items: center;
+      }
+
+      .viz-skill-name {
+        grid-column: 1;
+        grid-row: 1;
+        font-size: 0.8rem;
       }
 
       .viz-skill-level {
-        text-align: left;
+        grid-column: 2;
+        grid-row: 1;
+        text-align: right;
       }
 
       .viz-progress-bar {
-        margin: 4px 0;
+        grid-column: 1 / span 2;
+        grid-row: 2;
+        margin-top: 2px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .skills-visualizer-container {
+        padding: 16px;
       }
     }
 
@@ -2483,6 +2502,12 @@
       #flagship-project .flagship-placeholder-ring {
         width: 220px;
         height: 220px;
+      }
+
+      #flagship-project .flagship-placeholder-svg {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
       }
 
       #flagship-project .flagship-placeholder-text {
