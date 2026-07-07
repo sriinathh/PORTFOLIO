@@ -62,6 +62,13 @@
       padding: 0;
     }
 
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -72,7 +79,20 @@
       font-family: var(--ff-body);
       font-size: 16px;
       line-height: 1.7;
-      overflow-x: hidden;
+    }
+
+    img, svg, canvas, iframe, video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Global text wrapping constraints */
+    h1, h2, h3, h4, h5, h6, span, a, li, button, .chip, .viz-skill-name, .viz-skill-level {
+      overflow-wrap: break-word;
+      word-break: break-word;
+      white-space: normal;
+      max-width: 100%;
     }
 
     /* ===== GRAIN OVERLAY ===== */
@@ -1000,14 +1020,21 @@
       align-items: start;
     }
 
+    .about-text {
+      max-width: 700px;
+      width: 100%;
+    }
+
     .about-text p {
       color: var(--soft);
-      font-size: 1rem;
-      margin-bottom: 18px;
-      line-height: 1.85;
-      text-align: justify;
-      text-justify: inter-word;
-      word-break: break-word;
+      font-size: 17px;
+      margin-bottom: 24px;
+      line-height: 1.8;
+      text-align: left;
+      overflow-wrap: break-word;
+      word-break: normal;
+      white-space: normal;
+      max-width: 100%;
     }
 
     .about-text p strong {
@@ -8801,6 +8828,107 @@
     .stat-card:hover::after, .edu-card:hover::after, .exp-card:hover::after, .project-card:hover::after, .value-card:hover::after, .skills-visualizer-container:hover::after {
       background: linear-gradient(135deg, var(--green), var(--cyan), var(--purple));
     }
+
+    /* ===== MOBILE RESPONSIVENESS OVERRIDES & FIXES ===== */
+    
+    /* Center About title & text-align left for paragraphs */
+    #about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    #about h2.section-title {
+      font-size: 2.2rem;
+      text-align: center;
+      width: 100%;
+    }
+    
+    #about .section-label {
+      align-self: center;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    /* Ensure About content is centered as a block but text remains left-aligned */
+    .about-grid {
+      width: 100%;
+    }
+    
+    /* Custom spacing overrides for layout under 1000px */
+    @media (max-width: 1000px) {
+      section {
+        padding: 60px 18px !important;
+      }
+      .hero {
+        padding: 100px 18px 60px !important;
+      }
+      nav {
+        padding: 16px 18px !important;
+      }
+      .contact-wrapper {
+        padding: 36px 18px !important;
+      }
+      footer {
+        padding: 20px 18px !important;
+      }
+    }
+    
+    /* Font and padding overrides under 900px */
+    @media (max-width: 900px) {
+      #about h2.section-title {
+        font-size: 1.9rem !important;
+        margin-bottom: 32px !important;
+      }
+      .about-text {
+        padding: 0 !important; /* already padded by section wrapper */
+        margin: 0 auto;
+      }
+    }
+    
+    /* Spacing & grid wrap overrides under 480px */
+    @media (max-width: 480px) {
+      .about-text p {
+        font-size: 16px !important;
+      }
+      .about-stats {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+      }
+      .value-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+      }
+      .skills-visualizer-container {
+        padding: 16px !important;
+      }
+      .viz-tab {
+        padding: 6px 8px !important;
+        font-size: 0.68rem !important;
+      }
+      .skills-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+      }
+      .skill-group {
+        padding: 18px !important;
+      }
+      .hero-socials {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+      }
+      .exp-card {
+        padding: 20px 16px !important;
+      }
+      .achieve-card {
+        padding: 18px !important;
+        gap: 12px !important;
+      }
+      .project-content {
+        padding: 20px !important;
+      }
+    }
   </style>
 
 </head>
@@ -9022,10 +9150,9 @@
     <h2 class="section-title">Who I Am</h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm <strong>Srinath Potharaju</strong>, a <strong>Full Stack Web & Mobile Developer</strong> and <strong>Computer Science Engineer</strong> passionate about building modern, scalable, production-ready digital products.</p>
-        <p>I specialize in high-performance <strong>web applications</strong>, <strong>Android apps</strong>, <strong>RESTful APIs</strong>, and <strong>AI-powered solutions</strong> using <strong>React, Next.js, Node.js, Express.js, Java, Python, MongoDB, PostgreSQL, Firebase, and AWS</strong>.</p>
-        <p>My focus goes beyond writing code—I engineer complete software solutions featuring <strong>clean architecture</strong>, <strong>secure backends</strong>, <strong>responsive UIs</strong>, and <strong>seamless user experiences</strong>. I transform complex ideas into fast, reliable, production-ready products built to industry standards.</p>
-        <p>Driven by continuous learning, I constantly explore <strong>AI</strong>, <strong>cloud technologies</strong>, <strong>DevOps</strong>, and <strong>modern software engineering practices</strong> to solve meaningful problems and create lasting impact.</p>
+        <p>I'm <strong>Srinath Potharaju</strong>, a <strong>Full Stack Web & Mobile Developer</strong> and <strong>Computer Science Engineer</strong> passionate about building <strong>scalable, secure, and production-ready</strong> digital products. I enjoy transforming ideas into fast, modern applications with exceptional user experiences.</p>
+        <p>My expertise includes <strong>React, Next.js, Node.js, Express.js, Java, Python, MongoDB, PostgreSQL, Firebase, AWS</strong>, and <strong>REST APIs</strong>. I focus on writing <strong>clean, maintainable code</strong> while building responsive web applications, mobile apps, and efficient backend systems.</p>
+        <p>Beyond development, I continuously learn modern technologies, <strong>AI, cloud computing</strong>, and <strong>DevOps</strong> to solve real-world problems. My goal is to create reliable software that delivers performance, scalability, and meaningful business value.</p>
         <div class="edu-card">
           <div class="edu-school">Pursuing Computer Science & Engineering</div>
           <div class="edu-degree">B.Tech (4-Year Undergraduate Degree)</div>
