@@ -273,6 +273,106 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+const SYSTEM_PROMPT = `You are the AI Assistant representing Srinath Potharaju, a Full Stack Web & Mobile Developer and Computer Science Engineer. You should talk *exactly* like Srinath himself, in first-person (e.g., "I built this...", "My experience includes...").
+
+Keep your responses professional, friendly, modern, and concise. Try to keep replies relatively brief (1-3 sentences or a quick bulleted list where appropriate) so they look good in a chat window.
+
+Here is some background information about Srinath:
+- Full Name: Srinath Potharaju
+- Role: Full Stack Web & Mobile Developer, Computer Science Engineer
+- Education: B.Tech in Computer Science & Engineering (4-year undergraduate degree, 2023 - Present) based in Hyderabad, India.
+- Expertise: Designing high-performance web applications, Android apps, RESTful APIs, and AI-powered solutions.
+- Tech Stack:
+  * Frontend: React, Next.js, HTML, CSS, JavaScript, TailwindCSS (if applicable)
+  * Backend: Node.js, Express.js, Java, Python
+  * Databases & Cloud: MongoDB, PostgreSQL, Firebase, AWS
+  * Mobile: Android development (Kotlin, Java, MVVM)
+- Accomplishments & Stats:
+  * Built 40+ projects (including RideShare apps, full stack web apps, AI solutions).
+  * Solved 300+ Data Structures & Algorithms (DSA) problems.
+- Philosophy: He engineers complete software solutions with clean architecture, secure backend systems, responsive UIs, cloud deployment, and seamless user experiences. He enjoys transforming ideas into reliable, real-world products built to industry standards.
+- Contact: Email is psrinath821@gmail.com. LinkedIn is https://www.linkedin.com/in/srinath-potharaju/. GitHub is https://github.com/ (add user's details if known or just general). Portfolio site is srinath.dev.
+
+Guidelines for your replies:
+1. Always speak as Srinath (use "I", "my", "me").
+2. Answer questions about my projects, skills, tech stack, and background.
+3. Be friendly, welcoming, and professional. 
+4. If asked about things outside of my professional background or coding, politely redirect the conversation back to my portfolio, skills, or booking a call/using the contact form.
+5. If a recruiter asks to hire me, encourage them to fill out the contact form on this page or email me at psrinath821@gmail.com!
+`;
+
+app.post('/api/chat', async (req, res) => {
+  try {
+    const { messages } = req.body;
+    if (!messages || !Array.isArray(messages)) {
+      return res.status(400).json({ success: false, message: 'Invalid messages array.' });
+    }
+
+    const MISTRAL_API_KEY = process.env.MISTRAL_API_KEY;
+    const MISTRAL_MODEL = process.env.MISTRAL_MODEL || 'open-mistral-7b';
+
+    if (!MISTRAL_API_KEY) {
+      // Offline fallback mode
+      const lastUserMessage = messages[messages.length - 1]?.content || '';
+      console.log('🤖 Mistral API Key not set. Running in offline demo mode.');
+      
+      let reply = "Hey there! Thanks for reaching out. My AI assistant is currently in offline demo mode. You can get in touch with me directly using the contact form at the bottom of the page or drop an email at psrinath821@gmail.com! I'll get back to you as soon as possible.";
+      
+      const lowerMsg = lastUserMessage.toLowerCase();
+      if (lowerMsg.includes('skills') || lowerMsg.includes('tech') || lowerMsg.includes('stack')) {
+        reply = "I specialize in React, Next.js, Node.js, Express.js, Java, Python, MongoDB, PostgreSQL, Firebase, and AWS, as well as Android development. You can see my core tech competencies visualizer on the left side of the About section!";
+      } else if (lowerMsg.includes('project') || lowerMsg.includes('build')) {
+        reply = "I've built over 40 projects! Some highlights include full-stack web applications, native Android apps, and AI-powered solutions. Check out my projects section below to see my flagship applications in detail.";
+      } else if (lowerMsg.includes('experience') || lowerMsg.includes('job') || lowerMsg.includes('hire') || lowerMsg.includes('contact')) {
+        reply = "I'm always open to native Android and Full-Stack web development opportunities! Feel free to send a message via the contact form or email me at psrinath821@gmail.com so we can discuss how I can add value to your team.";
+      }
+
+      return res.status(200).json({
+        success: true,
+        reply
+      });
+    }
+
+    // Call Mistral API using global fetch
+    const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${MISTRAL_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: MISTRAL_MODEL,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          ...messages.slice(-10) // Send last 10 messages for context
+        ],
+        temperature: 0.7
+      })
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error('Mistral API error response:', errText);
+      throw new Error(`Mistral API returned status ${response.status}`);
+    }
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || "I'm sorry, I couldn't process that response.";
+
+    return res.status(200).json({
+      success: true,
+      reply
+    });
+
+  } catch (error) {
+    console.error('Chatbot API error:', error);
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to generate response from AI Assistant.'
+    });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📧 Contact endpoint ready at http://localhost:${PORT}/api/contact`);
