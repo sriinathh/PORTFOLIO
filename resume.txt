@@ -1,0 +1,262 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{changepage}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1.5pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubheadingCompact}[2]{
+  \vspace{-2pt}\item
+    \begin{minipage}[t]{0.97\textwidth}  % Adjust width to add margin
+    \begin{tabular*}{\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{#2} \\
+    \end{tabular*}
+    \end{minipage}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[left=0.8em]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fontawesome}
+\begin{document}
+
+%----------HEADING----------
+% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
+%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
+% \end{tabular*}
+
+\begin{center}
+    \textbf{\Huge \scshape Arpitha Medarametla} \\ \vspace{1pt}
+    \small +91 7207409055 $|$ 
+    \href{mailto:varunmaramreddy.work@gmail.com}{\underline{varunmaramreddy.work@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/varunmaramreddy/}{\underline{LinkedIn}} $|$ 
+    \href{https://github.com/DrMyth}{\underline{Github}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Institute of Aeronautical Engineering, Hyderabad}{Aug 2022 - May 2026 (expected)}
+      {Computer Science and Engineering}{8.26 CGPA}
+      % \resumeSubheading
+      % {Narayana Junior College, Hyderabad}{May 2020 - June 2022}
+      % {Intermediate (MPC)}{87.3\%}
+  \resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \vspace{1pt} 
+      \resumeSubheadingCompact
+        {Test Automation Engineer Intern $|$ KubeeAnalytics}{Apr 2025 – Present}
+      \resumeItemListStart
+        \resumeItem{Implemented a comprehensive end‑to‑end test automation suite with Cypress, targeting critical UI workflows, boosting test coverage by 35\% and enhancing software quality.}
+        \resumeItem{Integrated the test suite efficiently into AWS CodeBuild \& CodePipeline, cutting CI/CD build times by 50\%.}
+        \resumeItem{Identified and reported 10+ critical issues during testing, ensuring timely fixes and enhancing product reliability.}
+      \resumeItemListEnd
+    \vspace{-1pt} 
+    \resumeSubheadingCompact
+        {Software Developer Intern $|$ IndGeek}{Jan 2025 – Mar 2025}
+      \resumeItemListStart
+        \resumeItem{Developed an interactive node-based workflow builder with React, React Flow, and TypeScript, allowing users to visually create data pipelines 50\% faster than manual coding.}
+        \resumeItem{Designed a config-driven interface with JSON-based definitions, reducing manual setup time by 4x.}
+        \resumeItem{Integrated Zustand for efficient state management, optimizing workflow rendering speed by 30\%.}
+      \resumeItemListEnd
+      
+% -----------Multiple Positions Heading-----------
+%    \resumeSubSubheading
+%     {Software Engineer I}{Oct 2014 - Sep 2016}
+%     \resumeItemListStart
+%        \resumeItem{Apache Beam}
+%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+%     \resumeItemListEnd
+%    \resumeSubHeadingListEnd
+%-------------------------------------------
+  \resumeSubHeadingListEnd
+
+
+%-----------PROJECTS-----------
+\section{Projects}
+\resumeSubHeadingListStart
+    \resumeProjectHeading
+          {\textbf{\href{https://github.com/DrMyth/Hostrix}{Hostrix \faExternalLink}} $|$ \emph{NodeJS, ExpressJS, Kafka, PostgreSQL, S3, ECS, CloudFront, Docker}}{}
+          \resumeItemListStart
+            \resumeItem{Architected a scalable cloud hosting platform for deploying static sites, serverless backends, and full-stack applications, reducing deployment time by 50\%.}
+            \resumeItem{Improved global latency with CloudFlare and CloudFront CDN caching, boosting content delivery speed by 40\%.}
+            % \resumeItem{Leveraged Kafka for distributed log streaming to replace slow direct PostgreSQL updates, resulting in 3x faster log ingestion, and integrated AWS Cognito for secure authentication.}
+            \resumeItem{Leveraged Kafka for distributed log streaming to replace slow PostgreSQL updates, achieving 3x faster log ingestion.}
+          \resumeItemListEnd
+        {\vspace{-10pt}}
+      \resumeProjectHeading
+          {\textbf{\href{https://github.com/DrMyth/GitWhisper}{GitWhisper \faExternalLink}} $|$ \emph{NextJS, TypeScript, tRPC, PostgreSQL, PGVector, Prisma, LangChain, Docker}}{}
+          \resumeItemListStart
+            % \resumeItem{Built an AI-powered GitHub assistant that enables conversational interactions with code repositories, reducing code review time by 35\%.}
+            \resumeItem{Built an AI-powered GitHub assistant leveraging embeddings to enable conversational queries and pull-request summaries, slashing code review time by 35\%.}
+            \resumeItem{Developed a RAG pipeline to deliver context-aware code insights, boosting retrieval accuracy by 25\%.}
+            \resumeItem{Created a collaborative workspace to share AI responses and project insights reducing onboarding time by 30\%.}
+            % \resumeItem{Created a collaborative workspace for sharing AI-generated responses, project insights, and meeting summaries, reducing team onboarding time by 30\%.}
+            % \resumeItem{Optimized PGVector embeddings for semantic code search, achieving 4x faster retrieval speed}
+          \resumeItemListEnd
+      \resumeProjectHeading
+      {\textbf{\href{https://github.com/DrMyth/TradePilot}{TradePilot \faExternalLink}} $|$ \emph{Python, FastAPI, Model Context Protocol (MCP), OpenAPI, Uvicorn}}{}
+      \resumeItemListStart
+        \resumeItem{Engineered an MCP trade execution server that interprets natural language prompts to perform trading actions supporting 50+ commands, extending functionality beyond existing trading libraries.}
+        \resumeItem{Implemented a high-performance OpenAPI interface with FastAPI, enabling multi-language integration.}
+        \resumeItem{Enhanced trading automation with flexible commands and comprehensive data retrieval, minimizing manual effort.}
+      \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, JavaScript, TypeScript, HTML/CSS} \\
+     \textbf{Frameworks}{: NextJS, ReactJS, NodeJs, ExpressJS, FastAPI, Zustand, Tailwind, Socket.io, LangChain, Kafka} \\
+     \textbf{Databases}{: MongoDB, Mongoose ODM, MySQL, PostgreSQL, Prisma ORM, Redis, PGVector} \\
+     \textbf{DevOps}{: Linux, AWS, Docker, Jenkins CI/CD, Cypress, Prometheus, Grafana, Loki}\\
+    }}
+ \end{itemize}
+
+ {\vspace{-15px}}
+
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{}{\textbf{AWS Certified Cloud Practitioner (CLF-C02)}} \hfill {AWS} \\
+     \textbf{}{\textbf{MongoDB Certified Associate Developer (C100DEV)}} \hfill {MongoDB} \\
+     \textbf{}{\textbf{Fundamentals of Generative AI}} \hfill {Microsoft} \\
+    }}
+\end{itemize}
+
+{\vspace{-15px}}
+
+\section{Achievements}
+\begin{adjustwidth}{-0.8em}{}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+    {\textbf{\href{https://github.com/DrMyth/TradePilot}{}} \emph{}}{}
+    
+  \resumeItemListStart
+   {\vspace{-11pt}}
+    \resumeItem{Led a \textbf{50+ member team} in the \textbf{Swecha AI Creators Program} to develop a \textbf{Telugu language model}.}
+    \resumeItem{Received \textbf{Top Innovation} recognition at \textbf{HackForge 2025} among \textbf{200+ teams}.}
+    \resumeItem{Delivered an \textbf{AWS session} to \textbf{100+ developers}, simplifying cloud concepts and best practices.}
+  \resumeItemListEnd
+\resumeSubHeadingListEnd
+
+\end{adjustwidth}
+
+
+
+
+
+
+
+
+
+%-------------------------------------------
+\end{document}
